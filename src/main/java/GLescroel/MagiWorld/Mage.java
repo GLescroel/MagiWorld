@@ -34,8 +34,7 @@ public class Mage extends Personnage {
     protected void attaqueBasique(Joueur attaquant, Joueur attaque){
         TRACE("Mage.attaqueBasique");
 
-        Interaction.affichageMessage(attaquant.nomJoueur + " lance "+ attaquant.perso.nomAttaqueBasique + " et inflige " + intelligence + " dommages.");
-        Interaction.affichageMessage(attaque.nomJoueur + " perd " + intelligence + " points de vie.");
+        Interaction.affichageAttaqueBasique(attaquant.nomJoueur, attaque.nomJoueur, attaquant.perso.nomAttaqueBasique, intelligence);
 
         attaque.perso.vitalite = attaque.perso.vitalite - intelligence;
     }

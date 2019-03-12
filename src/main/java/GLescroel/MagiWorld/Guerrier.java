@@ -33,8 +33,7 @@ public class Guerrier extends Personnage {
     protected void attaqueBasique(Joueur attaquant, Joueur attaque){
         TRACE("Guerrier.attaqueBasique()");
 
-        Interaction.affichageMessage(attaquant.nomJoueur + " lance "+ attaquant.perso.nomAttaqueBasique + " et inflige " + force + " dommages.");
-        Interaction.affichageMessage(attaque.nomJoueur + " perd " + force + " points de vie.");
+        Interaction.affichageAttaqueBasique(attaquant.nomJoueur, attaque.nomJoueur, attaquant.perso.nomAttaqueBasique, force);
 
         attaque.perso.vitalite = attaque.perso.vitalite - force;
     }

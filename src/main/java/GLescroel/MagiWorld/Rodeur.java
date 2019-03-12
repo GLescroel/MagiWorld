@@ -33,8 +33,7 @@ public class Rodeur extends Personnage {
     protected void attaqueBasique(Joueur attaquant, Joueur attaque){
         TRACE("Rodeur.attaqueBasique()");
 
-        Interaction.affichageMessage(attaquant.nomJoueur + " lance "+ attaquant.perso.nomAttaqueBasique + " et inflige " + agilite + " dommages.");
-        Interaction.affichageMessage(attaque.nomJoueur + " perd " + agilite + " points de vie.");
+        Interaction.affichageAttaqueBasique(attaquant.nomJoueur, attaque.nomJoueur, attaquant.perso.nomAttaqueBasique, agilite);
 
         attaque.perso.vitalite = attaque.perso.vitalite - agilite;
     }

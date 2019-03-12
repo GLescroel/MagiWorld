@@ -83,14 +83,17 @@ public class Interaction {
 
     /**
      * affichageAttaque affiche l'attaque en cours
-     * @param nomJoueur nom du joueur attaquant
-     * @param attaque nom de l'attaque
-     * @param consequence conséquence principale de l'attaque
+     * @param attaquant nom du joueur attaquant
+     * @param attaque nom du joueur attaqué
+     * @param nomAttaqueBasique nom de l'attaque
+     * @param dommages infligés à l'attaqué
      */
-    public static void affichageAttaque(String nomJoueur, String attaque, String consequence) {
-        TRACE("Interaction.affichageAttaque()");
+    public static void affichageAttaqueBasique(String attaquant, String attaque, String nomAttaqueBasique, int dommages) {
+        TRACE("Interaction.affichageAttaqueBasique()");
 
-        System.out.println(nomJoueur + " utilise " + attaque + " et " + consequence);
+        Interaction.affichageMessage(attaquant + " lance "+ nomAttaqueBasique + " et inflige " + dommages + " dommages.");
+        Interaction.affichageMessage(attaque   + " perd " + dommages + " points de vie.");
+
     }
 
     /**
