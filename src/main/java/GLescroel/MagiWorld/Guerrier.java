@@ -26,22 +26,33 @@ public class Guerrier extends Personnage {
 
     /**
      * attaqueBasique lance l'attaque basique du Guerrier
-     * @param joueur le joueur attaqué
+     * @param attaquant le joueur qui lance l'attaque
+     * @param attaque   le joueur attaqué
      */
-    protected void attaqueBasique(Joueur joueur){
+    @Override
+    protected void attaqueBasique(Joueur attaquant, Joueur attaque){
         TRACE("Guerrier.attaqueBasique()");
 
-        joueur.perso.vitalite = joueur.perso.vitalite - force;
+        Interaction.affichageMessage(attaquant.nomJoueur + " lance "+ attaquant.perso.nomAttaqueBasique + " et inflige " + force + " dommages.");
+        Interaction.affichageMessage(attaque.nomJoueur + " perd " + force + " points de vie.");
+
+        attaque.perso.vitalite = attaque.perso.vitalite - force;
     }
 
     /**
      * attaqueSpeciale lance l'attaque spéciale du Guerrier
-     * @param joueur le joueur attaqué
+     * @param attaquant le joueur qui lance l'attaque
+     * @param attaque   le joueur attaqué
      */
-    protected void attaqueSpeciale(Joueur joueur){
+    @Override
+    protected void attaqueSpeciale(Joueur attaquant, Joueur attaque){
         TRACE("Guerrier.attaqueSpeciale()");
 
-        joueur.perso.vitalite = joueur.perso.vitalite - (force*2);
+        Interaction.affichageMessage(attaquant.nomJoueur + " lance "+ attaquant.perso.nomAttaqueSpeciale + " et inflige " + (force*2) + " dommages.");
+        Interaction.affichageMessage(attaque.nomJoueur + " perd " + (force*2) + " points de vie.");
+        Interaction.affichageMessage(attaquant.nomJoueur + " perd " + (force/2) + " points de vie.");
+
+        attaque.perso.vitalite = attaque.perso.vitalite - (force*2);
         vitalite = vitalite - (force/2);
 
     }

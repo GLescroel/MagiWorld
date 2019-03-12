@@ -60,8 +60,8 @@ public class Partie {
         joueur1 = new Joueur("Joueur 1");
         joueur2 = new Joueur("Joueur 2");
 
-        joueur1.creationPersonnage();
-        joueur2.creationPersonnage();
+        joueur1.parametragePersonnage();
+        joueur2.parametragePersonnage();
     }
 
     /**
@@ -70,6 +70,29 @@ public class Partie {
     public void executerPartie() {
         TRACE("Partie.executerPartie()");
 
+        do {
+            joueur1.perso.attaque(joueur1, joueur2);
+
+            if(joueur2.perso.vitalite > 0)
+                joueur2.perso.attaque(joueur2, joueur1);
+
+        }while (joueur1.perso.vitalite > 0 && joueur2.perso.vitalite > 0);
+
+        affichageResultat();
     }
 
+    /**
+     * affichageResultat() affiche le résultat de la partie
+     */
+    public void affichageResultat() {
+        TRACE("Partie.affichageResultat()");
+
+        if((joueur1.perso.vitalite <= 0) && (joueur2.perso.vitalite <= 0))
+            Interaction.affichageMessage("Vous vous êtes entretués !\n\n");
+        else if(joueur1.perso.vitalite > 0)
+            Interaction.affichageMessage(joueur2.nomJoueur + " est mort\n" + joueur1.nomJoueur + " a gagné le combat !\n\n");
+        else
+            Interaction.affichageMessage(joueur1.nomJoueur + " est mort\n" + joueur2.nomJoueur + " a gagné le combat !\n\n");
+
+    }
 }

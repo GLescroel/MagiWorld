@@ -17,11 +17,14 @@ public abstract class Personnage {
     protected int agilite;
     protected int intelligence;
 
+    public static final String attaqueBasique = "Attaque Basique";
+    public static final String attaqueSpeciale = "Attaque Spéciale";
+
     protected String nomAttaqueBasique;
     protected String nomAttaqueSpeciale;
 
-    protected abstract void attaqueBasique(Joueur joueur);
-    protected abstract void attaqueSpeciale(Joueur joueur);
+    protected abstract void attaqueBasique(Joueur attaquant, Joueur attaque);
+    protected abstract void attaqueSpeciale(Joueur attaquant, Joueur attaque);
 
     /**
      * Personnage() constructor
@@ -38,6 +41,24 @@ public abstract class Personnage {
         this.force = force;
         this.agilite = agilite;
         this.intelligence = intelligence;
+    }
+
+    protected void attaque(Joueur attaquant, Joueur attaque) {
+        TRACE("Personnage.attaque()");
+
+        String demande = attaquant.nomJoueur + " (" + attaquant.perso.vitalite + " Vitalité) veuillez choisir votre action";
+        String[] action = {attaqueBasique, attaqueSpeciale};
+
+        String choixAttaque = action[Interaction.demanderChoix(demande, action) - 1];
+
+        switch (choixAttaque) {
+            case attaqueBasique:
+                attaquant.perso.attaqueBasique(attaquant, attaque);
+                break;
+            case attaqueSpeciale:
+                attaquant.perso.attaqueSpeciale(attaquant, attaque);
+                break;
+        }
     }
 
 }

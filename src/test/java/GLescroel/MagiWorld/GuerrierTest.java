@@ -12,7 +12,7 @@ public class GuerrierTest {
         Joueur joueur2 = new Joueur("Joueur2");
         joueur1.perso = new Mage(10, 1, 1, 8);
         joueur2.perso = new Guerrier(10,10,0,0);
-        joueur2.perso.attaqueBasique(joueur1);
+        joueur2.perso.attaqueBasique(joueur2, joueur1);
 
         assertEquals(40, joueur1.perso.vitalite);
     }
@@ -23,7 +23,7 @@ public class GuerrierTest {
         Joueur joueur2 = new Joueur("Joueur2");
         joueur1.perso = new Mage(10, 1, 1, 8);
         joueur2.perso = new Guerrier(10,10,0,0);
-        joueur2.perso.attaqueSpeciale(joueur1);
+        joueur2.perso.attaqueSpeciale(joueur2, joueur1);
 
         assertEquals(30, joueur1.perso.vitalite);
         assertEquals(45, joueur2.perso.vitalite);

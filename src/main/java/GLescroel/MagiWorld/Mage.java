@@ -27,20 +27,29 @@ public class Mage extends Personnage {
 
     /**
      * attaqueBasique lance l'attaque basique du Mage
-     * @param joueur le joueur attaqué
+     * @param attaquant le joueur qui lance l'attaque
+     * @param attaque   le joueur attaqué
      */
-    protected void attaqueBasique(Joueur joueur){
+    @Override
+    protected void attaqueBasique(Joueur attaquant, Joueur attaque){
         TRACE("Mage.attaqueBasique");
 
-        joueur.perso.vitalite = joueur.perso.vitalite - intelligence;
+        Interaction.affichageMessage(attaquant.nomJoueur + " lance "+ attaquant.perso.nomAttaqueBasique + " et inflige " + intelligence + " dommages.");
+        Interaction.affichageMessage(attaque.nomJoueur + " perd " + intelligence + " points de vie.");
+
+        attaque.perso.vitalite = attaque.perso.vitalite - intelligence;
     }
 
     /**
      * attaqueSpeciale lance l'attaque spéciale du Mage
-     * @param joueur le joueur attaqué
+     * @param attaquant le joueur qui lance l'attaque
+     * @param attaque   le joueur attaqué
      */
-    protected void attaqueSpeciale(Joueur joueur){
-        TRACE("Mage.atrtaqueSpeciale");
+    @Override
+    protected void attaqueSpeciale(Joueur attaquant, Joueur attaque){
+        TRACE("Mage.attaqueSpeciale");
+
+        Interaction.affichageMessage(attaquant.nomJoueur + " lance "+ attaquant.perso.nomAttaqueSpeciale + " et gagne " + (intelligence*2) + " en vitalité.");
 
         vitalite = vitalite + (intelligence*2);
         if(vitalite >= (niveau*5))

@@ -82,33 +82,6 @@ public class Interaction {
     }
 
     /**
-     * demanderOuiNon() = demande à l'utilisateur une réponse par O ou N à une question
-     * @param question = question posée
-     * @return String de la réponse
-     */
-    public static String demanderOuiNon(String question) {
-        TRACE("Interaction.demanderOuiNon()");
-
-        System.out.println(question);
-
-        String response="";
-        boolean responseIsGood = false;
-        do {
-            Scanner sc = new Scanner(System.in);
-            try {
-                response = sc.next();
-                responseIsGood = (response.toUpperCase().equals("O") || response.toUpperCase().equals("N"));
-            }catch (InputMismatchException exception){
-                System.out.println("Erreur de saisie");
-                sc.next();
-                responseIsGood = false;}
-
-        } while (responseIsGood == false);
-
-        return response.toUpperCase();
-    }
-
-    /**
      * affichageAttaque affiche l'attaque en cours
      * @param nomJoueur nom du joueur attaquant
      * @param attaque nom de l'attaque

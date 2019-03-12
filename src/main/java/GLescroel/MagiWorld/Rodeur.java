@@ -26,20 +26,29 @@ public class Rodeur extends Personnage {
 
     /**
      * attaqueBasique lance l'attaque basique du Rodeur
-     * @param joueur le joueur attaqué
+     * @param attaquant le joueur qui lance l'attaque
+     * @param attaque   le joueur attaqué
      */
-    protected void attaqueBasique(Joueur joueur){
+    @Override
+    protected void attaqueBasique(Joueur attaquant, Joueur attaque){
         TRACE("Rodeur.attaqueBasique()");
 
-        joueur.perso.vitalite = joueur.perso.vitalite - agilite;
+        Interaction.affichageMessage(attaquant.nomJoueur + " lance "+ attaquant.perso.nomAttaqueBasique + " et inflige " + agilite + " dommages.");
+        Interaction.affichageMessage(attaque.nomJoueur + " perd " + agilite + " points de vie.");
+
+        attaque.perso.vitalite = attaque.perso.vitalite - agilite;
     }
 
     /**
      * attaqueSpeciale lance l'attaque spéciale du Rodeur
-     * @param joueur le joueur attaqué
+     * @param attaquant le joueur qui lance l'attaque
+     * @param attaque   le joueur attaqué
      */
-    protected void attaqueSpeciale(Joueur joueur){
+    @Override
+    protected void attaqueSpeciale(Joueur attaquant, Joueur attaque){
         TRACE("Rodeur.attaqueSpeciale()");
+
+        Interaction.affichageMessage(attaquant.nomJoueur + " lance "+ attaquant.perso.nomAttaqueSpeciale + " et gagne " + (niveau/2) + " en agilité.");
 
         agilite = agilite + (niveau/2);
 
