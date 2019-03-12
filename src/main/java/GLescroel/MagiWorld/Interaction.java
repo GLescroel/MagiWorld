@@ -17,11 +17,13 @@ public class Interaction {
     public static int demanderChoix(String question, String[] reponses) {
         TRACE("Interaction.demanderChoix()");
 
-        System.out.println(question);
-
+        String reponsesFormat =" (";
         for (int i = 1; i <= reponses.length; i++)
-            System.out.println(i + " - " + reponses[i - 1]);
+            reponsesFormat += i + " : " + reponses[i - 1] + ", ";
+        reponsesFormat += ")";
+        reponsesFormat = reponsesFormat.replace(", )", ")");
 
+        System.out.println(question + reponsesFormat);
 
         int responseNb=0;
         boolean responseIsGood = false;
@@ -34,10 +36,6 @@ public class Interaction {
                 System.out.println("Erreur de saisie");
                 sc.next();
                 responseIsGood = false;}
-
-            /**if (nbResponse >= 1 && nbResponse <= responses.length)
-             responseIsGood = true;
-             else responseIsGood = false;*/
 
             if (responseIsGood == true)
                 DEBUG_DEV("Vous avez choisi  : " + reponses[responseNb - 1]);
@@ -59,8 +57,7 @@ public class Interaction {
     public static int demanderNombre(String valeurDemandee, int valeurMin, int valeurMax) {
         TRACE("Interaction.demanderNombre()");
 
-        System.out.println("\nChoix du nombre " + valeurDemandee + " entre " + valeurMin + " et " + valeurMax);
-        System.out.println("Avec combien " + valeurDemandee + " souhaitez vous jouer ?");
+        System.out.println("\n" + valeurDemandee + " entre " + valeurMin + " et " + valeurMax);
 
         int responseNb=0;
         boolean responseIsGood = false;
@@ -75,9 +72,9 @@ public class Interaction {
                 responseIsGood = false;}
 
             if (responseIsGood == true)
-                DEBUG_DEV("Vous avez choisi comme quantité " + valeurDemandee + " : " + responseNb);
+                DEBUG_DEV("Vous avez choisi comme " + valeurDemandee + " : " + responseNb);
             else
-                System.out.println("Vous n'avez pas choisi le nombre " + valeurDemandee + " parmi les choix proposés");
+                System.out.println("Vous n'avez pas choisi dans l'intervale proposé");
 
         } while (responseIsGood == false);
 
@@ -111,10 +108,24 @@ public class Interaction {
         return response.toUpperCase();
     }
 
+    /**
+     * affichageAttaque affiche l'attaque en cours
+     * @param nomJoueur nom du joueur attaquant
+     * @param attaque nom de l'attaque
+     * @param consequence conséquence principale de l'attaque
+     */
     public static void affichageAttaque(String nomJoueur, String attaque, String consequence) {
         TRACE("Interaction.affichageAttaque()");
 
         System.out.println(nomJoueur + " utilise " + attaque + " et " + consequence);
     }
 
+    /**
+     * affichageMessage() = affiche un message console à l'utilisateur
+     * @param message = pmessage à afficher
+     */
+    public static void affichageMessage(String message) {
+        TRACE("Interaction.affichageMessage");
+        System.out.println(message);
+    }
 }

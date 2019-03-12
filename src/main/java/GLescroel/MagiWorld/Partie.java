@@ -59,6 +59,9 @@ public class Partie {
 
         joueur1 = new Joueur("Joueur 1");
         joueur2 = new Joueur("Joueur 2");
+
+        joueur1.creationPersonnage();
+        joueur2.creationPersonnage();
     }
 
     /**
