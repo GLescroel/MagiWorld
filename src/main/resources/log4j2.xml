@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+    <Properties>
+        <Property name="filename">Logs/MagiWorld.log</Property>
+    </Properties>
+    <Appenders>
+        <File name="File" fileName="${filename}">
+            <PatternLayout>
+                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+        </File>
+	<!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+<!--            <PatternLayout pattern="${LOG_PATTERN}"/> -->
+        </Console>
+	</Appenders>
+    <Loggers>
+		<Logger name="GLescroel.MagiWorld.Main" additivity="false" >
+            <AppenderRef ref="File" />
+        </Logger>
+		<Logger name="GLescroel.MagiWorld.Partie" additivity="false" >
+            <AppenderRef ref="Console" />
+        </Logger>
+        <Root level="trace">
+        </Root>
+    </Loggers>
+</Configuration>
