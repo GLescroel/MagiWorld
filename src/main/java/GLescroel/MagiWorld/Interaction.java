@@ -57,7 +57,7 @@ public class Interaction {
     public static int demanderNombre(String valeurDemandee, int valeurMin, int valeurMax) {
         TRACE("Interaction.demanderNombre()");
 
-        System.out.println("\n" + valeurDemandee + " entre " + valeurMin + " et " + valeurMax);
+        System.out.println("\n" + valeurDemandee /*+ " entre " + valeurMin + " et " + valeurMax*/);
 
         int responseNb=0;
         boolean responseIsGood = false;

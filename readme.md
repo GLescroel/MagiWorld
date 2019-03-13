@@ -17,7 +17,7 @@ en ligne de commande, se positionner dans le répertoire du projet et "mvn clean 
 
 Exécution :
 - en ligne de commande, se positionner dans le répertoire projet/target et 
-- lancer "java -jar MagiWorld.jar -[mode]" pour modifier le mode d'exécution avec mode
+- lancer "java -jar MagiWorld-1.0-SNAPSHOT-jar-with-dependencies.jar -[mode]" pour modifier le mode d'exécution avec mode
   - PROD : pas de trace ni affichage de debug
   - DEV : affichage console de messages de debug
   - DEBUG : trace dans le fichier Logs/myGames.log l'exécution de toutes les méthodes appelées pendant l'exécution

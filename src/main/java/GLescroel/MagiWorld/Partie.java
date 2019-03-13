@@ -16,14 +16,6 @@ public class Partie {
     Joueur joueur1;
     Joueur joueur2;
 
-    private final String[] suitePartie = {
-            "Rejouer la même partie",
-            "Lancer une nouvelle partie",
-            "Quitter"};
-    private final int rejouer = 0;
-    private final int nouvellePartie = 1;
-    private final int quitter = 2;
-
     public static final Logger monDevLogger = LogManager.getLogger(GLescroel.MagiWorld.Partie.class.getName());
 
     /**
@@ -32,22 +24,11 @@ public class Partie {
     public void demarrerPartie(){
         TRACE("Partie.demarrerPartie()");
 
-        String suiteChoisie = "";
-        do {
-            initJoueurs();
+        initJoueurs();
 
-            do {
-                executerPartie();
+        executerPartie();
 
-
-                String demande = "\nLa partie est terminée\nQue vouhaitez vous faire maintenant ?";
-                suiteChoisie = suitePartie[Interaction.demanderChoix(demande, suitePartie)-1];
-
-            } while (suiteChoisie.equals(suitePartie[rejouer]));
-
-        }while(suiteChoisie.equals(suitePartie[nouvellePartie]));
-
-        System.out.println("Merci d'avoir joué ! à bientôt !");
+        //System.out.println("Merci d'avoir joué ! à bientôt !");
 
     }
 
@@ -90,9 +71,9 @@ public class Partie {
         if((joueur1.perso.vitalite <= 0) && (joueur2.perso.vitalite <= 0))
             Interaction.affichageMessage("Vous vous êtes entretués !\n\n");
         else if(joueur1.perso.vitalite > 0)
-            Interaction.affichageMessage(joueur2.nomJoueur + " est mort\n" + joueur1.nomJoueur + " a gagné le combat !\n\n");
+            Interaction.affichageMessage(joueur2.nomJoueur + " est mort\n" + joueur2.nomJoueur + " a perdu !\n\n");
         else
-            Interaction.affichageMessage(joueur1.nomJoueur + " est mort\n" + joueur2.nomJoueur + " a gagné le combat !\n\n");
+            Interaction.affichageMessage(joueur1.nomJoueur + " est mort\n" + joueur1.nomJoueur + " a perdu !\n\n");
 
     }
 }
